@@ -10,7 +10,7 @@ locals {
     module      = "oracle-terraform-oci-iam-tag"
   }
   merged_freeform_tags = merge(var.freeform_tags, local.default_freeform_tags)
-  compartment_id       = try(data.oci_identity_compartments.compartment.compartments[0].id, var.compartment_id)
+  compartment_id       = try(data.oci_identity_compartments.compartment[0].compartments[0].id, var.compartment_id)
 }
 
 resource "oci_identity_tag_namespace" "main" {
