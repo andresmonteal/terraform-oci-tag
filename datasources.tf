@@ -1,5 +1,5 @@
 data "oci_identity_compartments" "compartment" {
-  count = var.tenancy_ocid == null ? 0 : 1
+  count = var.compartment_id == null ? 1 : 0
   #Required
   compartment_id            = var.tenancy_ocid
   access_level              = "ANY"
