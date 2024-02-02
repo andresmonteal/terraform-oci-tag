@@ -45,3 +45,8 @@ variable "tags" {
   type    = map(any)
   default = {}
 }
+
+variable "tags_default" {
+  type    = map(any)
+  default = {}
+}

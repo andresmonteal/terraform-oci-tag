@@ -60,3 +60,15 @@ resource "oci_identity_tag" "main" {
     delete = "12h"
   }
 }
+
+resource "oci_identity_tag_default" "main" {
+  for_each = var.tags_default
+
+  #Required
+  compartment_id    = data.oci_identity_compartments.tag_default[each.key].compartments[0].id
+  tag_definition_id = oci_identity_tag.main[each.value["tag"]].id
+  value             = each.value["value"]
+
+  #Optional
+  is_required = false
+}
